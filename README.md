@@ -39,30 +39,5 @@ curl "http://localhost:3000/api/internships?domain=UI%2FUX&mode=Remote"
 curl http://localhost:3000/api/internships/INT-101
 ```
 
-Create:
-```bash
-curl -X POST http://localhost:3000/api/internships \
-  -H "Content-Type: application/json" \
-  -d '{"title":"QA Intern","domain":"Software Testing","mode":"Hybrid","location":"Pune","skills":["Testing","API"],"openings":2,"duration_weeks":8,"applications_open":true}'
-```
-The `id` can be omitted and will be generated. Update:
-```bash
-curl -X PATCH http://localhost:3000/api/internships/INT-101 \
-  -H "Content-Type: application/json" -d '{"openings":1}'
-```
-Delete:
-```bash
-curl -i -X DELETE http://localhost:3000/api/internships/INT-101
-```
-
-## Status codes
-- 200 read/update success
-- 201 created (includes `Location` header)
-- 204 deleted (empty body)
-- 400 invalid input, JSON, filters, or pagination
-- 404 record/route missing
-- 409 duplicate ID
-- 500 unexpected server error without internal details
-
 ## Notes
 `data/schema.sql` documents the schema and `data/seed.json` is the seed dataset. Database files are ignored by Git. This is a backend API, not a static website; Netlify static hosting alone does not run this Express server. Use a Node-capable hosting provider for public deployment.
